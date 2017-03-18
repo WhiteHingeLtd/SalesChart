@@ -75,7 +75,7 @@ Public Class SalesDataForm
                 Dim Weekdate = StartDate.AddDays(WeekLoop * -7) 'So we go back a week from our current day. If we start at zero, we dont want a multiplier of 0 so we add that multiplier.
                 Dim NewLine As New DataGridViewRow
                 NewLine.CreateCells(SalesGrid)
-                NewLine.Cells.Item(0).Value = Weekdate.AddDays(-2).ToString("yyyy/MM/dd")
+                NewLine.Cells.Item(0).Value = Weekdate.AddDays(5).ToString("yyyy/MM/dd") 'We apparently use the NEXT saturday, because thats not fucking confusing
 
                 'Saturdays - Weird how suddenly weekends are possible.
                 Dim saturdaylist As New ArrayList
@@ -487,7 +487,7 @@ Public Class SalesDataForm
         Dim newrow As New DataGridViewRow
         If showfullscreen Then
             newrow.CreateCells(fullscreenForm.SalesGrid)
-            newrow.Height = 30
+            newrow.Height = 20
         Else
             newrow.CreateCells(SalesGrid)
             newrow.Height = 5
@@ -511,7 +511,8 @@ Public Class SalesDataForm
             clonerow.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             If showfullscreen Then
                 clonerow.CreateCells(fullscreenForm.SalesGrid)
-                clonerow.Height = 50
+                clonerow.Height = fullscreenForm.RowHeight
+                clonerow.Tag = "Clonerow"
             Else
                 clonerow.CreateCells(SalesGrid)
             End If
@@ -555,6 +556,13 @@ Public Class SalesDataForm
         End If
         rowcollection.Reverse()
 
+        Dim fontSize As Integer = 0
+        If showfullscreen Then
+            fontSize = 25
+        Else
+            fontSize = 11.25
+        End If
+
         For Each row As DataGridViewRow In rowcollection
             'Total check for green, ignoring cells that have a blue background or have no numeric value.
             'Sat
@@ -570,6 +578,9 @@ Public Class SalesDataForm
                     'No change
                 Else
                     row.Cells(1).Style.BackColor = Color.FromArgb(20, 80, 20)
+                    If totCheck = 0 Then
+                        row.Cells(1).Style.BackColor = Color.FromArgb(30, 120, 30)
+                    End If
                 End If
                 totCheck = 0
             End If
@@ -586,6 +597,9 @@ Public Class SalesDataForm
                     'No change
                 Else
                     row.Cells(2).Style.BackColor = Color.FromArgb(20, 80, 20)
+                    If totCheck = 0 Then
+                        row.Cells(2).Style.BackColor = Color.FromArgb(30, 120, 30)
+                    End If
                 End If
                 totCheck = 0
             End If
@@ -602,6 +616,9 @@ Public Class SalesDataForm
                     'No change
                 Else
                     row.Cells(3).Style.BackColor = Color.FromArgb(20, 80, 20)
+                    If totCheck = 0 Then
+                        row.Cells(3).Style.BackColor = Color.FromArgb(30, 120, 30)
+                    End If
                 End If
                 totCheck = 0
             End If
@@ -618,6 +635,9 @@ Public Class SalesDataForm
                     'No change
                 Else
                     row.Cells(4).Style.BackColor = Color.FromArgb(20, 80, 20)
+                    If totCheck = 0 Then
+                        row.Cells(4).Style.BackColor = Color.FromArgb(30, 120, 30)
+                    End If
                 End If
                 totCheck = 0
             End If
@@ -634,6 +654,9 @@ Public Class SalesDataForm
                     'No change
                 Else
                     row.Cells(5).Style.BackColor = Color.FromArgb(20, 80, 20)
+                    If totCheck = 0 Then
+                        row.Cells(5).Style.BackColor = Color.FromArgb(30, 120, 30)
+                    End If
                 End If
                 totCheck = 0
             End If
@@ -650,6 +673,9 @@ Public Class SalesDataForm
                     'No change
                 Else
                     row.Cells(6).Style.BackColor = Color.FromArgb(20, 80, 20)
+                    If totCheck = 0 Then
+                        row.Cells(6).Style.BackColor = Color.FromArgb(30, 120, 30)
+                    End If
                 End If
                 totCheck = 0
             End If
@@ -666,6 +692,9 @@ Public Class SalesDataForm
                     'No change
                 Else
                     row.Cells(7).Style.BackColor = Color.FromArgb(20, 80, 20)
+                    If totCheck = 0 Then
+                        row.Cells(7).Style.BackColor = Color.FromArgb(30, 120, 30)
+                    End If
                 End If
                 totCheck = 0
             End If
@@ -683,6 +712,9 @@ Public Class SalesDataForm
                     'No change
                 Else
                     row.Cells(8).Style.BackColor = Color.FromArgb(20, 80, 20)
+                    If totCheck = 0 Then
+                        row.Cells(8).Style.BackColor = Color.FromArgb(30, 120, 30)
+                    End If
                 End If
                 totCheck = 0
             End If
@@ -705,7 +737,6 @@ Public Class SalesDataForm
             For Each row As DataGridViewRow In fullscreenForm.SalesGrid.Rows
                 row.Selected = False
             Next
-            fullscreenForm.LoadingLbl.Visible = False
             fullscreenForm.LastRefreshLbl.Text = "Last Refresh: " + Now.ToString("dddd HH:mm:ss")
         Else
             For Each row As DataGridViewRow In SalesGrid.Rows
@@ -718,10 +749,15 @@ Public Class SalesDataForm
     End Sub
 
     Private Sub LetMeLoadThatForYou_ProgressChanged(sender As Object, e As System.ComponentModel.ProgressChangedEventArgs) Handles LetMeLoadThatForYou.ProgressChanged
-        Progress.Maximum = salesTotal
-        totalLabel.Text = salesTotal
-        progressLabel.Text = progressTotal
-        Progress.Value = progressTotal
+        If showfullscreen Then
+            fullscreenForm.Progress.Maximum = salesTotal
+            fullscreenForm.Progress.Value = progressTotal
+        Else
+            Progress.Maximum = salesTotal
+            totalLabel.Text = salesTotal
+            progressLabel.Text = progressTotal
+            Progress.Value = progressTotal
+        End If
     End Sub
 
     Private Sub GetSalesDataList(EndDate As Date)
@@ -782,4 +818,5 @@ Public Class SalesDataForm
             newWeirdWindow.ShowDialog()
         End If
     End Sub
+
 End Class

@@ -28,6 +28,15 @@ Partial Class SalesDataForm
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GenerateButton = New System.Windows.Forms.Button()
         Me.SalesGrid = New System.Windows.Forms.DataGridView()
+        Me.Week = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SatCol = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SunCol = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Monday = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Tuesday = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Wednesday = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Thursday = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Friday = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Total = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.WeeksBox = New System.Windows.Forms.TextBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
@@ -43,15 +52,6 @@ Partial Class SalesDataForm
         Me.Label3 = New System.Windows.Forms.Label()
         Me.totalLabel = New System.Windows.Forms.Label()
         Me.progressLabel = New System.Windows.Forms.Label()
-        Me.Week = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SatCol = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SunCol = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Monday = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Tuesday = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Wednesday = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Thursday = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Friday = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Total = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.SalesGrid, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -120,6 +120,60 @@ Partial Class SalesDataForm
         Me.SalesGrid.RowsDefaultCellStyle = DataGridViewCellStyle4
         Me.SalesGrid.Size = New System.Drawing.Size(925, 422)
         Me.SalesGrid.TabIndex = 0
+        '
+        'Week
+        '
+        Me.Week.HeaderText = "Date (Sat)"
+        Me.Week.Name = "Week"
+        Me.Week.ReadOnly = True
+        '
+        'SatCol
+        '
+        Me.SatCol.HeaderText = "Sat"
+        Me.SatCol.Name = "SatCol"
+        Me.SatCol.ReadOnly = True
+        '
+        'SunCol
+        '
+        Me.SunCol.HeaderText = "Sun"
+        Me.SunCol.Name = "SunCol"
+        Me.SunCol.ReadOnly = True
+        '
+        'Monday
+        '
+        Me.Monday.HeaderText = "Mon"
+        Me.Monday.Name = "Monday"
+        Me.Monday.ReadOnly = True
+        '
+        'Tuesday
+        '
+        Me.Tuesday.HeaderText = "Tue"
+        Me.Tuesday.Name = "Tuesday"
+        Me.Tuesday.ReadOnly = True
+        '
+        'Wednesday
+        '
+        Me.Wednesday.HeaderText = "Wed"
+        Me.Wednesday.Name = "Wednesday"
+        Me.Wednesday.ReadOnly = True
+        '
+        'Thursday
+        '
+        Me.Thursday.HeaderText = "Thu"
+        Me.Thursday.Name = "Thursday"
+        Me.Thursday.ReadOnly = True
+        '
+        'Friday
+        '
+        Me.Friday.HeaderText = "Fri"
+        Me.Friday.Name = "Friday"
+        Me.Friday.ReadOnly = True
+        '
+        'Total
+        '
+        Me.Total.HeaderText = "Total"
+        Me.Total.Name = "Total"
+        Me.Total.ReadOnly = True
         '
         'Label1
         '
@@ -193,6 +247,8 @@ Partial Class SalesDataForm
         '
         Me.CBDirect.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CBDirect.AutoSize = True
+        Me.CBDirect.Checked = True
+        Me.CBDirect.CheckState = System.Windows.Forms.CheckState.Checked
         Me.CBDirect.Location = New System.Drawing.Point(557, 504)
         Me.CBDirect.Name = "CBDirect"
         Me.CBDirect.Size = New System.Drawing.Size(66, 24)
@@ -204,6 +260,8 @@ Partial Class SalesDataForm
         '
         Me.CBWebsite.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CBWebsite.AutoSize = True
+        Me.CBWebsite.Checked = True
+        Me.CBWebsite.CheckState = System.Windows.Forms.CheckState.Checked
         Me.CBWebsite.Location = New System.Drawing.Point(470, 504)
         Me.CBWebsite.Name = "CBWebsite"
         Me.CBWebsite.Size = New System.Drawing.Size(81, 24)
@@ -215,6 +273,8 @@ Partial Class SalesDataForm
         '
         Me.CBAmazon.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CBAmazon.AutoSize = True
+        Me.CBAmazon.Checked = True
+        Me.CBAmazon.CheckState = System.Windows.Forms.CheckState.Checked
         Me.CBAmazon.Location = New System.Drawing.Point(557, 475)
         Me.CBAmazon.Name = "CBAmazon"
         Me.CBAmazon.Size = New System.Drawing.Size(83, 24)
@@ -226,6 +286,8 @@ Partial Class SalesDataForm
         '
         Me.CBEbay.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CBEbay.AutoSize = True
+        Me.CBEbay.Checked = True
+        Me.CBEbay.CheckState = System.Windows.Forms.CheckState.Checked
         Me.CBEbay.Location = New System.Drawing.Point(470, 475)
         Me.CBEbay.Name = "CBEbay"
         Me.CBEbay.Size = New System.Drawing.Size(60, 24)
@@ -290,60 +352,6 @@ Partial Class SalesDataForm
         Me.progressLabel.Size = New System.Drawing.Size(17, 20)
         Me.progressLabel.TabIndex = 16
         Me.progressLabel.Text = "0"
-        '
-        'Week
-        '
-        Me.Week.HeaderText = "Date (Sat)"
-        Me.Week.Name = "Week"
-        Me.Week.ReadOnly = True
-        '
-        'SatCol
-        '
-        Me.SatCol.HeaderText = "Sat"
-        Me.SatCol.Name = "SatCol"
-        Me.SatCol.ReadOnly = True
-        '
-        'SunCol
-        '
-        Me.SunCol.HeaderText = "Sun"
-        Me.SunCol.Name = "SunCol"
-        Me.SunCol.ReadOnly = True
-        '
-        'Monday
-        '
-        Me.Monday.HeaderText = "Mon"
-        Me.Monday.Name = "Monday"
-        Me.Monday.ReadOnly = True
-        '
-        'Tuesday
-        '
-        Me.Tuesday.HeaderText = "Tue"
-        Me.Tuesday.Name = "Tuesday"
-        Me.Tuesday.ReadOnly = True
-        '
-        'Wednesday
-        '
-        Me.Wednesday.HeaderText = "Wed"
-        Me.Wednesday.Name = "Wednesday"
-        Me.Wednesday.ReadOnly = True
-        '
-        'Thursday
-        '
-        Me.Thursday.HeaderText = "Thu"
-        Me.Thursday.Name = "Thursday"
-        Me.Thursday.ReadOnly = True
-        '
-        'Friday
-        '
-        Me.Friday.HeaderText = "Fri"
-        Me.Friday.Name = "Friday"
-        Me.Friday.ReadOnly = True
-        '
-        'Total
-        '
-        Me.Total.HeaderText = "Total"
-        Me.Total.Name = "Total"
-        Me.Total.ReadOnly = True
         '
         'SalesDataForm
         '

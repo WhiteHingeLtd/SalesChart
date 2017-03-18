@@ -28,12 +28,7 @@ Partial Class Fullscreen
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.RefreshTimer = New System.Windows.Forms.Timer(Me.components)
-        Me.LoadingLbl = New System.Windows.Forms.Label()
-        Me.SwitchFocus = New System.Windows.Forms.Button()
         Me.SalesGrid = New System.Windows.Forms.DataGridView()
-        Me.CloseBtn = New System.Windows.Forms.Button()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.LastRefreshLbl = New System.Windows.Forms.Label()
         Me.Week = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SatCol = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SunCol = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -43,6 +38,12 @@ Partial Class Fullscreen
         Me.Thursday = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Friday = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Total = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CloseBtn = New System.Windows.Forms.Button()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.LastRefreshLbl = New System.Windows.Forms.Label()
+        Me.Progress = New System.Windows.Forms.ProgressBar()
+        Me.RowHeightUp = New System.Windows.Forms.Button()
+        Me.RowHeightDown = New System.Windows.Forms.Button()
         CType(Me.SalesGrid, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -50,31 +51,6 @@ Partial Class Fullscreen
         'RefreshTimer
         '
         Me.RefreshTimer.Interval = 15000
-        '
-        'LoadingLbl
-        '
-        Me.LoadingLbl.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.LoadingLbl.AutoSize = True
-        Me.LoadingLbl.Font = New System.Drawing.Font("Segoe UI Semilight", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LoadingLbl.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.LoadingLbl.Location = New System.Drawing.Point(49, 1029)
-        Me.LoadingLbl.Name = "LoadingLbl"
-        Me.LoadingLbl.Size = New System.Drawing.Size(65, 21)
-        Me.LoadingLbl.TabIndex = 5
-        Me.LoadingLbl.Text = "Loading"
-        '
-        'SwitchFocus
-        '
-        Me.SwitchFocus.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.SwitchFocus.FlatAppearance.BorderSize = 0
-        Me.SwitchFocus.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.SwitchFocus.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.SwitchFocus.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.SwitchFocus.Location = New System.Drawing.Point(3, 1040)
-        Me.SwitchFocus.Name = "SwitchFocus"
-        Me.SwitchFocus.Size = New System.Drawing.Size(10, 12)
-        Me.SwitchFocus.TabIndex = 5
-        Me.SwitchFocus.UseVisualStyleBackColor = True
         '
         'SalesGrid
         '
@@ -118,49 +94,13 @@ Partial Class Fullscreen
         Me.SalesGrid.RowHeadersVisible = False
         DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle4.BackColor = System.Drawing.Color.Black
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI Semibold", 25.0!)
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI Semibold", 23.0!)
         DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Gainsboro
         DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.SalesGrid.RowsDefaultCellStyle = DataGridViewCellStyle4
         Me.SalesGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.SalesGrid.Size = New System.Drawing.Size(1895, 1029)
+        Me.SalesGrid.Size = New System.Drawing.Size(1895, 991)
         Me.SalesGrid.TabIndex = 0
-        '
-        'CloseBtn
-        '
-        Me.CloseBtn.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.CloseBtn.FlatAppearance.BorderSize = 0
-        Me.CloseBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon
-        Me.CloseBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.CloseBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CloseBtn.Location = New System.Drawing.Point(1869, 12)
-        Me.CloseBtn.Name = "CloseBtn"
-        Me.CloseBtn.Size = New System.Drawing.Size(48, 60)
-        Me.CloseBtn.TabIndex = 4
-        Me.CloseBtn.Text = "X"
-        Me.CloseBtn.UseVisualStyleBackColor = True
-        '
-        'Panel1
-        '
-        Me.Panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Panel1.Controls.Add(Me.SalesGrid)
-        Me.Panel1.Location = New System.Drawing.Point(12, 12)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1895, 1029)
-        Me.Panel1.TabIndex = 13
-        '
-        'LastRefreshLbl
-        '
-        Me.LastRefreshLbl.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.LastRefreshLbl.Location = New System.Drawing.Point(3, 999)
-        Me.LastRefreshLbl.Name = "LastRefreshLbl"
-        Me.LastRefreshLbl.Size = New System.Drawing.Size(1914, 53)
-        Me.LastRefreshLbl.TabIndex = 14
-        Me.LastRefreshLbl.Text = "Last Refresh: "
-        Me.LastRefreshLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Week
         '
@@ -225,13 +165,86 @@ Partial Class Fullscreen
         Me.Total.ReadOnly = True
         Me.Total.Width = 200
         '
+        'CloseBtn
+        '
+        Me.CloseBtn.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.CloseBtn.FlatAppearance.BorderSize = 0
+        Me.CloseBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon
+        Me.CloseBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.CloseBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.CloseBtn.Location = New System.Drawing.Point(1869, 12)
+        Me.CloseBtn.Name = "CloseBtn"
+        Me.CloseBtn.Size = New System.Drawing.Size(48, 60)
+        Me.CloseBtn.TabIndex = 4
+        Me.CloseBtn.Text = "X"
+        Me.CloseBtn.UseVisualStyleBackColor = True
+        '
+        'Panel1
+        '
+        Me.Panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel1.Controls.Add(Me.SalesGrid)
+        Me.Panel1.Location = New System.Drawing.Point(12, 12)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(1895, 991)
+        Me.Panel1.TabIndex = 13
+        '
+        'LastRefreshLbl
+        '
+        Me.LastRefreshLbl.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LastRefreshLbl.BackColor = System.Drawing.Color.Transparent
+        Me.LastRefreshLbl.Font = New System.Drawing.Font("Segoe UI Semilight", 20.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LastRefreshLbl.Location = New System.Drawing.Point(3, 1003)
+        Me.LastRefreshLbl.Name = "LastRefreshLbl"
+        Me.LastRefreshLbl.Size = New System.Drawing.Size(1914, 34)
+        Me.LastRefreshLbl.TabIndex = 14
+        Me.LastRefreshLbl.Text = "Last Refresh: "
+        Me.LastRefreshLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Progress
+        '
+        Me.Progress.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Progress.BackColor = System.Drawing.Color.Black
+        Me.Progress.Location = New System.Drawing.Point(100, 1039)
+        Me.Progress.Name = "Progress"
+        Me.Progress.Size = New System.Drawing.Size(1700, 10)
+        Me.Progress.TabIndex = 15
+        '
+        'RowHeightUp
+        '
+        Me.RowHeightUp.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.RowHeightUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.RowHeightUp.Font = New System.Drawing.Font("Segoe UI Semilight", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RowHeightUp.Location = New System.Drawing.Point(1831, 1003)
+        Me.RowHeightUp.Name = "RowHeightUp"
+        Me.RowHeightUp.Size = New System.Drawing.Size(34, 34)
+        Me.RowHeightUp.TabIndex = 16
+        Me.RowHeightUp.Text = "▲"
+        Me.RowHeightUp.UseVisualStyleBackColor = True
+        '
+        'RowHeightDown
+        '
+        Me.RowHeightDown.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.RowHeightDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.RowHeightDown.Font = New System.Drawing.Font("Segoe UI Semilight", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RowHeightDown.Location = New System.Drawing.Point(1874, 1003)
+        Me.RowHeightDown.Name = "RowHeightDown"
+        Me.RowHeightDown.Size = New System.Drawing.Size(34, 34)
+        Me.RowHeightDown.TabIndex = 17
+        Me.RowHeightDown.Text = "▼"
+        Me.RowHeightDown.UseVisualStyleBackColor = True
+        '
         'Fullscreen
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.Color.Black
-        Me.ClientSize = New System.Drawing.Size(1920, 1053)
-        Me.Controls.Add(Me.SwitchFocus)
-        Me.Controls.Add(Me.LoadingLbl)
+        Me.ClientSize = New System.Drawing.Size(1920, 1045)
+        Me.Controls.Add(Me.RowHeightDown)
+        Me.Controls.Add(Me.RowHeightUp)
+        Me.Controls.Add(Me.Progress)
         Me.Controls.Add(Me.LastRefreshLbl)
         Me.Controls.Add(Me.CloseBtn)
         Me.Controls.Add(Me.Panel1)
@@ -244,12 +257,9 @@ Partial Class Fullscreen
         CType(Me.SalesGrid, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
     Friend WithEvents RefreshTimer As Timer
-    Friend WithEvents LoadingLbl As Label
-    Friend WithEvents SwitchFocus As Button
     Friend WithEvents SalesGrid As DataGridView
     Friend WithEvents CloseBtn As Button
     Friend WithEvents Panel1 As Panel
@@ -263,4 +273,7 @@ Partial Class Fullscreen
     Friend WithEvents Thursday As DataGridViewTextBoxColumn
     Friend WithEvents Friday As DataGridViewTextBoxColumn
     Friend WithEvents Total As DataGridViewTextBoxColumn
+    Friend WithEvents Progress As ProgressBar
+    Friend WithEvents RowHeightUp As Button
+    Friend WithEvents RowHeightDown As Button
 End Class
