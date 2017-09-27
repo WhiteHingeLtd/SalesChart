@@ -1,6 +1,6 @@
 ﻿Public Class Fullscreen
     Public formReference As SalesDataForm
-    Public RowHeight As Integer = 35
+    Public RowHeight As Integer = 40
 
     Private Sub RefreshTimer_Tick(sender As Object, e As EventArgs) Handles RefreshTimer.Tick
         formReference.GenerateButton.PerformClick()

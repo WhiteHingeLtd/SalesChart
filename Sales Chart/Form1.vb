@@ -345,42 +345,48 @@ Public Class SalesDataForm
                 'Complete total
                 Try
                     Dim newtotalvalue As Integer = 0
+                    'Add Sat
                     If Not IsNothing(NewLine.Cells(1).Value) Then
                         If IsNumeric(NewLine.Cells(1).Value) Then
                             newtotalvalue += NewLine.Cells(1).Value
                         End If
                     End If
+                    'Add Sun
                     If Not IsNothing(NewLine.Cells(2).Value) Then
                         If IsNumeric(NewLine.Cells(2).Value) Then
                             newtotalvalue += NewLine.Cells(2).Value
                         End If
                     End If
+                    'Add Mon
                     If Not IsNothing(NewLine.Cells(3).Value) Then
                         If IsNumeric(NewLine.Cells(3).Value) Then
                             newtotalvalue += NewLine.Cells(3).Value
                         End If
                     End If
+                    'Add Tue
                     If Not IsNothing(NewLine.Cells(4).Value) Then
                         If IsNumeric(NewLine.Cells(4).Value) Then
                             newtotalvalue += NewLine.Cells(4).Value
                         End If
                     End If
+                    'Add Wed
                     If Not IsNothing(NewLine.Cells(5).Value) Then
                         If IsNumeric(NewLine.Cells(5).Value) Then
                             newtotalvalue += NewLine.Cells(5).Value
                         End If
                     End If
+                    'Add Thu
                     If Not IsNothing(NewLine.Cells(6).Value) Then
                         If IsNumeric(NewLine.Cells(6).Value) Then
                             newtotalvalue += NewLine.Cells(6).Value
                         End If
                     End If
+                    'Add Fri
                     If Not IsNothing(NewLine.Cells(7).Value) Then
                         If IsNumeric(NewLine.Cells(7).Value) Then
                             newtotalvalue += NewLine.Cells(7).Value
                         End If
                     End If
-
 
                     NewLine.Cells(8).Value = newtotalvalue
                     For Each celltag As DataGridViewCell In NewLine.Cells
@@ -563,6 +569,8 @@ Public Class SalesDataForm
             fontSize = 11.25
         End If
 
+        'Debug stuff!
+        'Dim DumbRows As Integer = 0
         For Each row As DataGridViewRow In rowcollection
             'Total check for green, ignoring cells that have a blue background or have no numeric value.
             'Sat
@@ -577,9 +585,9 @@ Public Class SalesDataForm
                 If totCheck > 3 Then
                     'No change
                 Else
-                    row.Cells(1).Style.BackColor = Color.FromArgb(20, 80, 20)
+                    row.Cells(1).Style.BackColor = Color.FromArgb(20, 60, 20)
                     If totCheck = 0 Then
-                        row.Cells(1).Style.BackColor = Color.FromArgb(30, 120, 30)
+                        row.Cells(1).Style.BackColor = Color.FromArgb(30, 80, 30)
                     End If
                 End If
                 totCheck = 0
@@ -596,9 +604,9 @@ Public Class SalesDataForm
                 If totCheck > 3 Then
                     'No change
                 Else
-                    row.Cells(2).Style.BackColor = Color.FromArgb(20, 80, 20)
+                    row.Cells(2).Style.BackColor = Color.FromArgb(20, 60, 20)
                     If totCheck = 0 Then
-                        row.Cells(2).Style.BackColor = Color.FromArgb(30, 120, 30)
+                        row.Cells(2).Style.BackColor = Color.FromArgb(30, 80, 30)
                     End If
                 End If
                 totCheck = 0
@@ -615,9 +623,9 @@ Public Class SalesDataForm
                 If totCheck > 3 Then
                     'No change
                 Else
-                    row.Cells(3).Style.BackColor = Color.FromArgb(20, 80, 20)
+                    row.Cells(3).Style.BackColor = Color.FromArgb(20, 60, 20)
                     If totCheck = 0 Then
-                        row.Cells(3).Style.BackColor = Color.FromArgb(30, 120, 30)
+                        row.Cells(3).Style.BackColor = Color.FromArgb(30, 80, 30)
                     End If
                 End If
                 totCheck = 0
@@ -634,9 +642,9 @@ Public Class SalesDataForm
                 If totCheck > 3 Then
                     'No change
                 Else
-                    row.Cells(4).Style.BackColor = Color.FromArgb(20, 80, 20)
+                    row.Cells(4).Style.BackColor = Color.FromArgb(20, 60, 20)
                     If totCheck = 0 Then
-                        row.Cells(4).Style.BackColor = Color.FromArgb(30, 120, 30)
+                        row.Cells(4).Style.BackColor = Color.FromArgb(30, 80, 30)
                     End If
                 End If
                 totCheck = 0
@@ -653,9 +661,9 @@ Public Class SalesDataForm
                 If totCheck > 3 Then
                     'No change
                 Else
-                    row.Cells(5).Style.BackColor = Color.FromArgb(20, 80, 20)
+                    row.Cells(5).Style.BackColor = Color.FromArgb(20, 60, 20)
                     If totCheck = 0 Then
-                        row.Cells(5).Style.BackColor = Color.FromArgb(30, 120, 30)
+                        row.Cells(5).Style.BackColor = Color.FromArgb(30, 80, 30)
                     End If
                 End If
                 totCheck = 0
@@ -672,9 +680,9 @@ Public Class SalesDataForm
                 If totCheck > 3 Then
                     'No change
                 Else
-                    row.Cells(6).Style.BackColor = Color.FromArgb(20, 80, 20)
+                    row.Cells(6).Style.BackColor = Color.FromArgb(20, 60, 20)
                     If totCheck = 0 Then
-                        row.Cells(6).Style.BackColor = Color.FromArgb(30, 120, 30)
+                        row.Cells(6).Style.BackColor = Color.FromArgb(30, 80, 30)
                     End If
                 End If
                 totCheck = 0
@@ -691,9 +699,9 @@ Public Class SalesDataForm
                 If totCheck > 3 Then
                     'No change
                 Else
-                    row.Cells(7).Style.BackColor = Color.FromArgb(20, 80, 20)
+                    row.Cells(7).Style.BackColor = Color.FromArgb(20, 60, 20)
                     If totCheck = 0 Then
-                        row.Cells(7).Style.BackColor = Color.FromArgb(30, 120, 30)
+                        row.Cells(7).Style.BackColor = Color.FromArgb(30, 80, 30)
                     End If
                 End If
                 totCheck = 0
@@ -711,9 +719,9 @@ Public Class SalesDataForm
                 If totCheck > 3 Then
                     'No change
                 Else
-                    row.Cells(8).Style.BackColor = Color.FromArgb(20, 80, 20)
+                    row.Cells(8).Style.BackColor = Color.FromArgb(20, 60, 20)
                     If totCheck = 0 Then
-                        row.Cells(8).Style.BackColor = Color.FromArgb(30, 120, 30)
+                        row.Cells(8).Style.BackColor = Color.FromArgb(30, 80, 30)
                     End If
                 End If
                 totCheck = 0
@@ -729,6 +737,8 @@ Public Class SalesDataForm
                 Else
                     SalesGrid.Rows.Add(row)
                 End If
+                'Else
+                '    DumbRows += 1
             End If
         Next
 
@@ -737,19 +747,25 @@ Public Class SalesDataForm
             For Each row As DataGridViewRow In fullscreenForm.SalesGrid.Rows
                 row.Selected = False
             Next
-            fullscreenForm.LastRefreshLbl.Text = "Last Refresh: " + Now.ToString("dddd HH:mm:ss")
+            fullscreenForm.LastRefreshLbl.Text = "Last Refresh: " + Now.ToString("dddd HH:mm:ss").ToUpper
+            'If Not DumbRows.ToString = "16" Then
+            'fullscreenForm.DumbRowTxt.Text = DumbRows.ToString
+            'Else
+            'fullscreenForm.DumbRowTxt.Text = ""
+            'End If
         Else
             For Each row As DataGridViewRow In SalesGrid.Rows
                 row.Selected = False
             Next
         End If
-
+        fullscreenForm.Progress.Visible = False
         gridRowColl.Clear()
 
     End Sub
 
     Private Sub LetMeLoadThatForYou_ProgressChanged(sender As Object, e As System.ComponentModel.ProgressChangedEventArgs) Handles LetMeLoadThatForYou.ProgressChanged
         If showfullscreen Then
+            fullscreenForm.Progress.Visible = True
             fullscreenForm.Progress.Maximum = salesTotal
             fullscreenForm.Progress.Value = progressTotal
         Else
